@@ -1,16 +1,16 @@
 # KHO DỮ LIỆU VÀ OLAP
 HỆ THỐNG QUẢN LÝ VÀ PHÂN TÍCH DỮ LIỆU KHÁCH HÀNG QUA CÁC CHIẾN DỊCH MARKETING
 - Xây dựng Kho dữ liệu - SSIS
-+ Mô tả quy trình chọn dữ liệu
-+ Xây dụng kho dữ liệu (Lược đồ Star Schema)
-+ Thiết lập kết nối SSIS
+a, Mô tả quy trình chọn dữ liệu
+b, Xây dụng kho dữ liệu (Lược đồ Star Schema)
+c, Thiết lập kết nối SSIS
 - Phân tích dữ liệu trực tuyến - SSAS
-+ Thiết lập kết nối SSAS
-+ Phân tích dữ liệu bằng ngôn ngữ MDX (12 câu truy vấn)
-+ Report bằng Excel
+a, Thiết lập kết nối SSAS
+b, Phân tích dữ liệu bằng ngôn ngữ MDX (12 câu truy vấn)
+c, Report bằng Excel
 - Quá trình Report - Power BI
-+ Report Power BI 12 câu truy vấn
+a, Report Power BI 12 câu truy vấn
 - Quá trình Datamining : (Random forest và Decision Tree)
-+ Xử lý dữ liệu
-+ Phân lớp dữ liệu
-+ Train mô hình Random Forest và Decision Tree
+a, Xử lý dữ liệu
+b, Phân lớp dữ liệu
+c, Train mô hình Random Forest và Decision Tree
