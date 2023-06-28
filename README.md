@@ -1,5 +1,6 @@
 # KHO DỮ LIỆU VÀ OLAP
 HỆ THỐNG QUẢN LÝ VÀ PHÂN TÍCH DỮ LIỆU KHÁCH HÀNG QUA CÁC CHIẾN DỊCH MARKETING
+Link drive Đồ án: https://drive.google.com/drive/u/1/folders/1YUjgdHY20A5smaADpmJmLU2guf0ZCVAt
 - Xây dựng Kho dữ liệu - SSIS
 a, Mô tả quy trình chọn dữ liệu
 b, Xây dụng kho dữ liệu (Lược đồ Star Schema)
