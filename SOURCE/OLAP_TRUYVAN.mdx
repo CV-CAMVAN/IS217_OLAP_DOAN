@@ -1,0 +1,111 @@
+﻿// CÂU 1: THỐNG KÊ THU NHẬP HẰNG NĂM CỦA KHÁCH HÀNG ĐÃ CHẤP NHẬN 4 CHIẾN DỊCH MARKETING
+SELECT {[Measures].[Income],
+        [Measures].[Total Campaigns Accepted]} ON 0,
+	FILTER ([DIM CUSTOMER].[User ID].[User ID],
+			[Measures].[Total Campaigns Accepted] = 4) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 2: THỐNG KÊ TOP10 KHÁCH HÀNG CÓ THU NHẬP HẰNG NĂM LỚN NHẤT
+SELECT [Measures].[Income] ON 0,
+HEAD ( 
+	ORDER ([DIM CUSTOMER].[User ID].[User ID].MEMBERS,
+           [Measures].[Income], DESC), 10) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 3: THỐNG KÊ SỐ TIỀN ĐÃ MUA HÀNG CỦA TOP 10 KHÁCH HÀNG CÓ THU NHẬP HẰNG NĂM LỚN HƠN 30000$
+SELECT {[Measures].[Income], 
+        [Measures].[Total Spent]} ON 0,
+HEAD({
+	FILTER({
+		ORDER([DIM CUSTOMER].[User ID].[User ID],
+		      [Measures].[Total Spent], DESC)},
+			  [Measures].[Income] >= 30000)},10) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 4: THỐNG KÊ NHỮNG KHÁCH HÀNG ĐÃ CHI NHIỀU HƠN 150$ CHO MẶT HÀNG BÁNH KẸO NHƯNG SỐ LƯỢNG TRẺ EM TRONG NHÀ NHỎ HƠN 2
+SELECT {[Measures].[Kidhome], [Measures].[Mnt Sweets]} ON 0,
+EXCEPT (
+	{FILTER ([DIM CUSTOMER].[User ID].CHILDREN , 
+	         [Measures].[Mnt Sweets] > 150)},
+	{FILTER ([DIM CUSTOMER].[User ID].CHILDREN ,
+	         [Measures].[Kidhome] = 2)}) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 5: THỐNG KÊ TOP5 KHÁCH HÀNG CÓ TỔNG SỐ ĐƠN MUA HÀNG NHIỀU NHẤT TRONG NĂM 2014
+WITH MEMBER [Measures].[TỔNG SỐ ĐƠN HÀNG] AS  
+[Measures].[Num Catalog Pur] + [Measures].[Num Deals Pur] + [Measures].[Num Store Pur] + [Measures].[Num Web Pur] 
+SELECT [Measures].[TỔNG SỐ ĐƠN HÀNG] ON COLUMNS,
+GENERATE(
+	DESCENDANTS ([DIM TIME].[TIME].[Year Enroll].&[2014].CHILDREN ,
+	             [DIM TIME].[TIME].[Month Enroll]),
+	TOPCOUNT ([DIM TIME].[Month Enroll].CURRENTMEMBER*
+	          [DIM CUSTOMER].[User ID].CHILDREN, 5, 
+			  [Measures].[TỔNG SỐ ĐƠN HÀNG])) ON ROWS
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 6: THỐNG KÊ TOP5 QUỐC GIA CÓ SỐ LƯỢNG MUA HÀNG Ở STORE ÍT NHẤT
+SELECT NON EMPTY [Measures].[Num Store Pur] ON 0 ,
+	BOTTOMCOUNT ([DIM COUNTRY].[Country].[Country].MEMBERS, 5, 
+                 [Measures].[Num Store Pur]) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 7: THỐNG KÊ NGÀY CÓ LƯỢNG TRUY CẬP VÀO WEB ÍT NHẤT TRONG THÁNG 8 NĂM 2012
+SELECT [Measures].[Num Web Visits Month] ON 0,
+BOTTOMSUM ({
+	DESCENDANTS([DIM TIME].[TIME].[Year Enroll].&[2012].&[8],
+	            [DIM TIME].[TIME].[Day Enroll])},1,
+			    [Measures].[Num Web Visits Month]) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 8: THỐNG KÊ NHỮNG KHÁCH HÀNG VỪA MUA HÀNG Ở WEB VỪA MUA HÀNG Ở STORE
+SELECT {[Measures].[Num Web Pur], [Measures].[Num Store Pur]} ON 0,
+INTERSECT (
+	{FILTER ([DIM CUSTOMER].[User ID].[User ID],
+	         [Measures].[Num Store Pur] > 0)},
+	{FILTER ([DIM CUSTOMER].[User ID].[User ID],
+	         [Measures].[Num Web Pur] > 0)}) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 9: THỐNG KÊ NHỮNG KHÁCH HÀNG CÓ TỔNG SỐ ĐƠN HÀNG CAO NHẤT TẠI TỪNG QUỐC GIA
+WITH MEMBER [Measures].[TỔNG SỐ ĐƠN HÀNG] AS  
+[Measures].[Num Catalog Pur] + [Measures].[Num Deals Pur] + [Measures].[Num Store Pur] + [Measures].[Num Web Pur] 
+SELECT [Measures].[TỔNG SỐ ĐƠN HÀNG] ON 0,
+GENERATE([DIM COUNTRY].[Country].[Country],
+	TOPCOUNT
+		 ([DIM COUNTRY].[Country].CURRENTMEMBER*
+		  [DIM CUSTOMER].[User ID].CHILDREN, 1, 
+		  [Measures].[TỔNG SỐ ĐƠN HÀNG])) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 10: TÍNH TRUNG BÌNH SỐ TIỀN ĐÃ CHI CHO TẤT CẢ CÁC MẶT HÀNG CỦA TOP5 KHÁCH HÀNG CÓ THU NHẬP HẰNG NĂM CAO NHẤT THEO TỪNG QUỐC GIA
+WITH MEMBER [Measures].[TRUNG BÌNH] AS
+[Measures].[Total Spent]/[Measures].[TỔNG SỐ ĐƠN HÀNG]
+SELECT {[Measures].[Income], [Measures].[TRUNG BÌNH]} ON 0,
+GENERATE([DIM COUNTRY].[Country].[Country],
+	TOPPERCENT({[DIM COUNTRY].[Country].CURRENTMEMBER*
+		FILTER([DIM CUSTOMER].[User ID].[User ID], [Measures].[TỔNG SỐ ĐƠN HÀNG] <> 0)},
+		5,[Measures].[Income])) ON 1
+FROM [MARKETING WAREHOUSE];	
+
+// CÂU 11: THỐNG KÊ SỐ LƯỢNG ĐƠN HÀNG ĐÃ THANH TOÁN QUA CATALOG VÀ THU NHẬP HẰNG NĂM CỦA TOP10 KHÁCH HÀNG ĐỘC THÂN VÀ MỚI TỐT NGHIỆP (TĂNG DẦN THEO SỐ LƯỢNG ĐƠN HÀNG)
+SELECT {[Measures].[Income], [Measures].[Num Catalog Pur]} ON 0,
+TAIL (
+	ORDER ( 
+		(DRILLUPLEVEL(([DIM CUSTOMER].[Marital Status].&[Single],
+		             [DIM CUSTOMER].[Education].&[Graduation]),
+					 [DIM CUSTOMER].[Marital Status].[Marital Status])*
+					 [DIM CUSTOMER].[User ID].[User ID]),
+					 [Measures].[Num Catalog Pur],ASC),15) ON 1
+FROM [MARKETING WAREHOUSE];
+
+// CÂU 12: TRUY VẤN DRILLDOWN CÁC THÁNG CỦA NĂM 2012 CÓ LƯỢNG TIÊU THỤ CÁC MẶT HÀNG VỀ RƯỢU NHIỀU HƠN 2000$
+SELECT [Measures].[Mnt Wines] ON 0,	
+[DIM TIME].[Month Enroll].[Month Enroll]*
+(FILTER (
+	{DRILLDOWNMEMBER([DIM TIME].[TIME].[Day Enroll],
+	                 [DIM TIME].[TIME].[Month Enroll].MEMBERS)},
+					 [Measures].[Mnt Wines] >= 2000)) ON 1
+FROM [MARKETING WAREHOUSE]
+WHERE [DIM TIME].[Year Enroll].&[2012];
+
+

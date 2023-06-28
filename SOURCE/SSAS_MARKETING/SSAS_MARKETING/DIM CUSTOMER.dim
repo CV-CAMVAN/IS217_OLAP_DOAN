@@ -1,0 +1,220 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="de151cfb-9dd1-40cd-93b9-9d48e4fd9d88" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DIM CUSTOMER</ID>
+  <Name>DIM CUSTOMER</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2142" scrolltop="-4466" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7324" y="12319" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIM_CUSTOMER" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="3387" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b00003b0d0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_DIM_CUSTOMER" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2142</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-4466</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="ff1c1355-77cb-4c78-b720-cb3d8ec1dd8c">
+    <DataSourceViewID>MARKETING WAREHOUSE</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="71ec6647-954e-4a60-965a-12b2cc6fce33">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="ef71946f-be85-44f3-bb81-907adcd68a3d">
+      <ID>User ID</ID>
+      <Name>User ID</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6948e19c-b73e-48c3-acc1-7ab4d1a42412">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cbc8cfee-8555-4097-924c-2f9a3c0e8a92">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>User_ID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="72ce1046-d331-4389-a8d5-bca8b9b13b3e">
+          <AttributeID>Year Birth</AttributeID>
+          <Name>Year Birth</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="752bb8eb-3fd6-4a5e-828a-536e45c634fb">
+          <AttributeID>Marital Status</AttributeID>
+          <Name>Marital Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="debf29af-9548-41df-b4f9-bec1e3a8d121">
+          <AttributeID>Education</AttributeID>
+          <Name>Education</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ff363f79-5d66-45a1-b18b-ec9f59007f05">
+          <AttributeID>Income</AttributeID>
+          <Name>Income</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6fa346b9-9fa6-4b88-be86-b035a04f986a">
+          <AttributeID>Kidhome</AttributeID>
+          <Name>Kidhome</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="58faf1d9-cfd2-4528-842c-3462fb22bada">
+          <AttributeID>Teenhome</AttributeID>
+          <Name>Teenhome</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9359417a-453b-4536-9654-12182f8349d8">
+      <ID>Year Birth</ID>
+      <Name>Year Birth</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a96d350a-e25b-484d-a325-add0f9ac1191">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="11c0b0f6-9158-4bc6-9084-d2ce0ecbb7ca">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>Year_Birth</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="05e7cf27-41e9-472b-a1f8-17fdf9c66b5a">
+      <ID>Marital Status</ID>
+      <Name>Marital Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d58b737a-1daf-426c-941e-a302bab0505a">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6d681a13-bcf0-4797-bc14-707f32b0a3ff">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>Marital_Status</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="89205d81-2958-456a-adf6-82020ed4cf66">
+      <ID>Education</ID>
+      <Name>Education</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a8f2e3a0-13be-4e62-bce9-e6971203111d">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e6923545-df11-4a3f-aac7-b3cecd7d0bda">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>Education</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="63824647-7c3f-4013-b8b3-dbc682541fb3">
+      <ID>Income</ID>
+      <Name>Income</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d01f3a80-b924-46da-a9d8-c4c7bf216e6e">
+          <DataType>Double</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1000cb37-1e60-4de4-84a9-0db0e4a4c409">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>Income</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e5b6837b-c90a-4eb7-ad03-9a7c59bde8d0">
+      <ID>Kidhome</ID>
+      <Name>Kidhome</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ab331f13-f061-4413-9652-da1e3fd6dec8">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f0cdb512-8771-4d67-97c2-cb2ce2fc2f93">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>Kidhome</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c4a7fd3f-86d9-426d-9a94-f1401007770d">
+      <ID>Teenhome</ID>
+      <Name>Teenhome</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bef77ecd-3a35-4164-b291-a59265bf61a2">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8ebf47e3-0292-4da6-8dc7-1ce986b38274">
+            <TableID>dbo_DIM_CUSTOMER</TableID>
+            <ColumnID>Teenhome</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>
